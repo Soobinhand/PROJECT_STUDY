@@ -1,4 +1,4 @@
-package com.example.project.project_study.user;
+package com.example.project.project_study.signin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class SignInController {
 
-    private final UserService userService;
+    private final SignInService signInService;
 
     @Autowired
-    public UserController(UserService userService){
-        this.userService = userService;
+    public SignInController(SignInService signInService){
+        this.signInService = signInService;
     }
 
     @GetMapping("/signin")
@@ -22,9 +22,8 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/a")
-    public String signIn(@RequestBody User user){
-        System.out.println("abcd");
-        userService.createUser(user);
+    public String signIn(@RequestBody SignInData signInData){
+        signInService.createUser(signInData);
         return "redirect:index";
     }
 
