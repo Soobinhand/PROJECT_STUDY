@@ -21,7 +21,7 @@ public class SignInController {
     }
 
     @ResponseBody
-    @PostMapping("/a")
+    @PostMapping("/signin")
     public String signIn(@RequestBody SignInData signInData){
         signInService.createUser(signInData);
         return "redirect:index";
